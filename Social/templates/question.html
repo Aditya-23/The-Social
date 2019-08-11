@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Question</title>
+</head>
+<body>
+	<div align="center">
+		<form method="post">{% csrf_token %}
+		Question : <input type="text" name="question", maxlength="60">
+		asked_user : <input type="text" name="asked_user", value={{ user.username }}  >
+		<input type="submit" value="submit">
+		</form>
+	</div>
+</body>
+</html>

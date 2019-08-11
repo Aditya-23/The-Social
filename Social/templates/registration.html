@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+</head>
+<body>
+	<div class="container" align="center">
+		<form method="post">{% csrf_token %}
+		{% for err in form_error %}
+			{{ err }}
+		{% endfor %}
+		{{ form.as_p }}
+		<input type="submit" name="submit" value="submit">
+		</form>
+	</div>
+</body>
+</html>

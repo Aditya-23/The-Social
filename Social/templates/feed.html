@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Feed</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div align="center">
+			<div class="bg-success text-white"><h3> Welcome, {{ logged_in_user.firstname.capitalize }}!</h3></div>
+		</div>
+		<div align="center">
+			<form method="get">
+				<input type="text" name="query" placeholder="search..">
+				<button type="submit">Search</button>
+			</form>	
+		</div>
+		<a href= {% url 'question' user=logged_in_user.username %}><button type="button" class="button btn btn-success">Ask</button></a>
+		<br>
+		<div>
+			{% for question, answers in ques_ans.items %}
+			<table class="table">
+				<ul>
+					<thead>
+						<th>
+						<tr>	<p class="font-weight-bolder"><li>{{ question }}</li></p></tr>
+						</th>
+					</thead>
+					<tbody>
+					<ol>
+					{% for answer in answers %}
+
+						<li>{{ answer.answer }}</li>
+						<footer class="blockquote-footer"> written by {{ answer.answered_user.username }}</footer>
+					{% endfor%}
+					</tbody>
+					<br>
+					<a href= {% url 'answer_field' user=logged_in_user.username question=question %}><button type="button" class="button btn btn-success">Answer</button></a>
+					</ol>
+				</ul>
+			</table>
+			{% endfor%}
+			<br>
+		</div>
+	</div>
+</body>
+</html>

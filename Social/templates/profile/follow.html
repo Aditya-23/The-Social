@@ -1,0 +1,5 @@
+<form class="form" method="post" action="url{% 'follow' %}">{% csrf_token %}
+	<input type="hidden" name="follower_username" value="{{ username }}">
+	<input type="hidden" name="original_username" value="{{ original_user }}">
+	<input type="submit" class="btn btn-primary">
+</form>

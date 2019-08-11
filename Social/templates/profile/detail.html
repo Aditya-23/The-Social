@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Details</title>
+</head>
+<body>
+	<div>
+		<h2>Hello, {{ object.firstname }}! </h2>
+		{% include 'profile/follow.html' with username= {{ object.username }} original_user = {{ original_user }} %}
+		<br>
+		{% for question, answers in ques_ans.items %}
+			<ol>
+				<li>{{ question }}</li>
+
+				<ol>
+				{% for answer in answers %}
+					<li>{{ answer.answer }}</li>
+					<p> - written by {{ answer.answered_user.username }}</p>
+				{% endfor%}
+				<br>
+				<a href= {% url 'answer_field' user=object.username question=question %}><button type="button">Answer</button></a>
+				</ol>
+			</ol>
+		{% endfor%}	
+	</div>
+</body>
+</html>

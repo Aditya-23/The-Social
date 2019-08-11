@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Answer</title>
+</head>
+<body>
+	<form method="post">{% csrf_token %}
+		Question : {{ asked_question }}<br>
+		Answer : <input type="text" name="answer" maxlength="1000"><br>
+		user : <input type="text" name="answered_user" value= {{ answering_user }}><br>
+		<input type="submit" name="Submit" value="Submit">
+	</form>
+</body>
+</html>
